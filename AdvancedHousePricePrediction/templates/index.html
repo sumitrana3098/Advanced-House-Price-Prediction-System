@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Advanced House Price Prediction</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>🏠 Advanced House Price Prediction System</h1>
+<p class="subtitle">
+    Predict residential property prices using Machine Learning
+</p>
+    <form action="/predict" method="post">
+<div class="form-grid">
+        <div class="form-group">
+    <label>Area (sq ft)</label>
+    <input type="number" name="area" required>
+        </div>
+
+        <div class="form-group">
+        <label>Bedrooms</label>
+        <input type="number" name="bedrooms" min="1" max="5" required>
+</div>
+        <div class="form-group">
+        <label>Bathrooms</label>
+        <input type="number" name="bathrooms" min="1" max="3" required>
+</div>
+        <div class="form-group">
+        <label>Floors</label>
+        <input type="number" name="stories" min="1" max="3" required>
+</div>
+        <div class="form-group">
+        <label>Parking</label>
+        <input type="number" name="parking" min="0" max="2" required>
+</div>
+        <div class="form-group">
+        <label>Age</label>
+        <input type="number" name="age" min="0" max="50" required>
+</div>
+        <div class="form-group">
+        <label>Locality Rating</label>
+        <input type="number" name="locality_rating"
+               min="1"
+               max="10"
+               required>
+</div>
+               <div class="form-group">
+        <label>City</label>
+        <select name="city">
+            <option>Chennai</option>
+            <option>Delhi</option>
+            <option>Hyderabad</option>
+            <option>Kolkata</option>
+            <option>Mumbai</option>
+            <option>Pune</option>
+        </select>
+</div>
+        <div class="form-group">
+        <label>Furnishing</label>
+        <select name="furnishing">
+            <option>Furnished</option>
+            <option>Semi-Furnished</option>
+            <option>Unfurnished</option>
+        </select>
+</div>
+        <div class="form-group">
+        <label>Main Road</label>
+        <select name="main_road">
+            <option>Yes</option>
+            <option>No</option>
+        </select>
+</div>
+        <div class="form-group">
+        <label>Guest Room</label>
+        <select name="guest_room">
+            <option>Yes</option>
+            <option>No</option>
+        </select>
+</div>
+        <div class="form-group">
+        <label>Basement</label>
+        <select name="basement">
+            <option>Yes</option>
+            <option>No</option>
+        </select>
+</div>
+        <div class="form-group">
+        <label>Water Supply</label>
+        <select name="water_supply">
+            <option>Borewell</option>
+            <option>Both</option>
+            <option>Corporation</option>
+        </select>
+</div>
+        <div class="form-group">
+        <label>Air Conditioning</label>
+        <select name="air_conditioning">
+            <option>Yes</option>
+            <option>No</option>
+        </select>
+</div>
+        <div class="form-group">
+        <label>Preferred Tenant</label>
+        <select name="preferred_tenant">
+            <option>Bachelor</option>
+            <option>Company</option>
+            <option>Family</option>
+        </select>
+</div>
+</div>
+        <button type="submit">
+            Predict House Price
+        </button>
+
+    </form>
+
+    {% if prediction_text %}
+
+    <div class="result-card">
+
+    <h2>{{ prediction_text }}</h2>
+
+    <h3>
+        Category: {{ category }}
+    </h3>
+
+    <br>
+
+    <a href="/download_report">
+        <button>
+            Download PDF Report
+        </button>
+    </a>
+
+</div>
+
+    {% endif %}
+
+    <div class="footer">
+        DA-378 | IITG Term Project-2 by Sumit Rana
+    </div>
+
+</div>
+
+</body>
+</html>
